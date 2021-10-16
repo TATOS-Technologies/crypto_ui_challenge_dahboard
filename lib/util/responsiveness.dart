@@ -1,21 +1,24 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 
 enum DeviceType {
-  Mobile,
-  Tablet,
-  Desktop,
+  mobile,
+  tablet,
+  desktop,
 }
 
+// ignore: must_be_immutable
 class Responsiveness extends StatelessWidget {
-  final Widget largeScreen;
-  final Widget mediumScreen;
-  final Widget smallScreen;
+   Widget largeScreen;
+   Widget mediumScreen;
+   Widget smallScreen;
 
-  Responsiveness({
+  Responsiveness({Key? key, 
     required this.largeScreen,
     required this.mediumScreen,
     required this.smallScreen,
-  });
+  }) : super(key: key);
 
   static bool isLargeScreen(BuildContext context) {
     return MediaQuery.of(context).size.width >= 1200;

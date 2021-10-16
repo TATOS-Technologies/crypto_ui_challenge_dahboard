@@ -1,3 +1,4 @@
+import 'package:crypto_ui_challenge_dahboard/util/responsiveness.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
@@ -18,14 +19,18 @@ class _MainDashboardState extends State<MainDashboard> {
         color: const Color(0xffF7CA31),
         child: Center(
           child: SizedBox(
-            width: 1077.w,
+            width: Responsiveness.isLargeScreen(context)
+                ? 1077.w
+                : MediaQuery.of(context).size.width/1.2,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: Responsiveness.isLargeScreen(context)
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 75,
-                  width: 308,
+                  height: Responsiveness.isLargeScreen(context) ? 75 : 41,
+                  width: Responsiveness.isLargeScreen(context) ? 308 : 129,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/logo.png"),
@@ -36,8 +41,8 @@ class _MainDashboardState extends State<MainDashboard> {
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: Container(
-                    height: 75,
-                    width: 308,
+                    height: Responsiveness.isLargeScreen(context) ? 75 : 41,
+                    width: Responsiveness.isLargeScreen(context) ? 308 : 303,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("assets/scoreboard.png"),
@@ -50,8 +55,10 @@ class _MainDashboardState extends State<MainDashboard> {
                   height: 25.h,
                 ),
                 SizedBox(
-                  height: 448.h,
-                  width: 1077.w,
+                  height: 488.h,
+                  width: Responsiveness.isLargeScreen(context)
+                      ? 1077.w
+                      : MediaQuery.of(context).size.width,
                   child: Scrollbar(
                     isAlwaysShown: true,
                     thickness: 27.w,
