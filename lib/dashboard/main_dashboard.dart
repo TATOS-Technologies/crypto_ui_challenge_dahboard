@@ -1,3 +1,4 @@
+import 'package:crypto_ui_challenge_dahboard/constants.dart';
 import 'package:crypto_ui_challenge_dahboard/util/responsiveness.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,8 @@ class _MainDashboardState extends State<MainDashboard> {
         child: Center(
           child: SizedBox(
             width: Responsiveness.isLargeScreen(context)
-                ? 1077.w
-                : MediaQuery.of(context).size.width/1.2,
+                ? 1127.w
+                : MediaQuery.of(context).size.width / 1.2,
             child: Column(
               crossAxisAlignment: Responsiveness.isLargeScreen(context)
                   ? CrossAxisAlignment.start
@@ -65,7 +66,7 @@ class _MainDashboardState extends State<MainDashboard> {
                     hoverThickness: 27.w,
                     showTrackOnHover: true,
                     child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: names.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 17),
@@ -92,7 +93,7 @@ class _MainDashboardState extends State<MainDashboard> {
                                         ),
                                       ),
                                       Text(
-                                        "#$index",
+                                        "#${ranks[index]}",
                                         style: TextStyle(
                                           color: const Color(0xff222222),
                                           fontFamily: 'Poppins',
@@ -123,12 +124,12 @@ class _MainDashboardState extends State<MainDashboard> {
                                         child: Container(
                                           height: 74.h,
                                           width: 74.w,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Color(0xff222222),
                                               image: DecorationImage(
                                                 image: NetworkImage(
-                                                  "https://media.istockphoto.com/photos/young-woman-photographing-the-autumn-season-picture-id864516870?b=1&k=20&m=864516870&s=170667a&w=0&h=Hg4HcoGEfJ5QUqNSLFfKiOrD5xncPDPMe4BpBP7HR44=",
+                                                  profileImgs[index],
                                                 ),
                                                 fit: BoxFit.cover,
                                               )),
@@ -149,12 +150,12 @@ class _MainDashboardState extends State<MainDashboard> {
                                             ),
                                           ),
                                           Text(
-                                            "@archaedus$index",
+                                            "@${names[index]}",
                                             style: TextStyle(
                                               color: const Color(0xff222222),
                                               fontFamily: 'Poppins',
                                               fontWeight: FontWeight.w700,
-                                              fontSize: 30.sp,
+                                              fontSize: 26.sp,
                                             ),
                                           ),
                                         ],
@@ -176,7 +177,7 @@ class _MainDashboardState extends State<MainDashboard> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "Earnings",
+                                        "COMMUNITY POINTS",
                                         style: TextStyle(
                                           color: const Color(0xff222222),
                                           fontFamily: 'Poppins',
@@ -184,7 +185,7 @@ class _MainDashboardState extends State<MainDashboard> {
                                         ),
                                       ),
                                       Text(
-                                        "#$index Eth",
+                                        "${communityPoints[index]}",
                                         style: TextStyle(
                                           color: const Color(0xff222222),
                                           fontFamily: 'Poppins',
@@ -217,7 +218,7 @@ class _MainDashboardState extends State<MainDashboard> {
                                         ),
                                       ),
                                       Text(
-                                        "#$index",
+                                        "${points[index]}",
                                         style: TextStyle(
                                           color: const Color(0xff222222),
                                           fontFamily: 'Poppins',
@@ -250,7 +251,9 @@ class _MainDashboardState extends State<MainDashboard> {
                                         ),
                                       ),
                                       InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          launchURL(url: postUrl[index]);
+                                        },
                                         child: Text(
                                           "View",
                                           style: TextStyle(
