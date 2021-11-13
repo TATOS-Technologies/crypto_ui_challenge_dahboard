@@ -131,7 +131,7 @@ class _MainDashboardState extends State<MainDashboard> {
                                                 image: NetworkImage(
                                                   profileImgs[index],
                                                 ),
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                               )),
                                         ),
                                       ),

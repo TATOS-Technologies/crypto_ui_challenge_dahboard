@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "crypto-ui-dashboard",
     "public": "build/web",
     "ignore": [
       "firebase.json",

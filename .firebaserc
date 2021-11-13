@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "crypro-ui-dashboard"
+    "default": "crypto-ui-dashboard"
   }
+  
 }
